@@ -2,11 +2,17 @@ import React from 'react';
 
 const Task = ({ todo, onToggleCompleted, onDeleteTodo }) => {
   return (
-    <div className="task">
-      <input type="checkbox" checked={todo.completed} onChange={() => onToggleCompleted(todo._id)} />
-      <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{todo.text}</span>
-      <button onClick={() => onDeleteTodo(todo._id)}>Delete</button>
-    </div>
+    <>
+      <span 
+        className={`fw-bold ${todo.completed ? 'text-decoration-line-through text-muted' : ''}`}
+        onClick={() => onToggleCompleted(todo._id)}
+        style={{ cursor: 'pointer' }}
+      >
+        {todo.text}
+      </span>
+
+      <button className="btn btn-danger btn-sm" onClick={() => onDeleteTodo(todo._id)}>Delete</button>
+    </>
   );
 };
 

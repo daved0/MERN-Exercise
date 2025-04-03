@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "bootswatch/dist/slate/bootstrap.min.css";
 import './App.css';
 import Task from './components/Task';
 import TaskList from './components/TaskList';
@@ -79,13 +80,32 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Todo List</h1>
-      <input type="text" value={newTodoText} onChange={handleInputChange} />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <TaskList todos={todos} onToggleCompleted={handleToggleCompleted} onDeleteTodo={handleDeleteTodo} />
+    <div className="container mt-5">
+      <div className="card shadow-lg">
+        <div className="card-body">
+          <h1 className="card-title text-center">Todo List</h1>
+          
+          <div className="input-group mb-3">
+            <input 
+              type="text" 
+              className="form-control" 
+              placeholder="Enter a new task..." 
+              value={newTodoText} 
+              onChange={handleInputChange} 
+            />
+            <button className="btn btn-primary" onClick={handleAddTodo}>Add Todo</button>
+          </div>
+  
+          <TaskList 
+            todos={todos} 
+            onToggleCompleted={handleToggleCompleted} 
+            onDeleteTodo={handleDeleteTodo} 
+          />
+        </div>
+      </div>
     </div>
   );
+  
 }
 
 export default App;
